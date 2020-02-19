@@ -1,10 +1,7 @@
 <head>
 <style type="text/css">body{margin:40px
 auto;max-width:760px;line-height:1.6;font-size:20px;padding:0
-10px}h1,h2,h3{line-height:1.2};font-family:sans;</style>
-<script type="text/javascript" id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
-</script>
+10px;font-family:sans}h1,h2,h3{line-height:1.2}pre{white-space: pre-wrap}</style>
 </head>
 <body>
 <h1 id="how-i-build-this-site">How I Build This Site</h1>
@@ -13,13 +10,14 @@ auto;max-width:760px;line-height:1.6;font-size:20px;padding:0
 <p>The index page is written in raw html. No particular reason, I just want to write html every so often. If html had better link syntax, markdown wouldn’t exist. The index is not generate; I add links to each post manually.</p>
 <h2 id="posts">Posts</h2>
 <p>I type posts (including this one) in markdown format. The markdown is converted to html using Pandoc:</p>
-<pre><code>pandoc -s $(name).md -o $(name).html --template=template.html --metadata pagetitle=&#39;Page of Content&#39;</code></pre>
-<p>(This is actually an entry in a Makefile, where I pass the parameter <code>name</code> to give the name of the file.)</p>
-<p>The template file <code>template.html</code> is the template used by Pandoc to generate the post. It’s as minimalist as possible. The styling is quite minimal. The most important thing is that it sets the max width to 760px. Here’s the whole thing, taken from <a href="http://bettermotherfuckingwebsite.com/">this site</a>. My site is actually slightly more minimalist than that one because I’ve removed one of the CSS declarations. The full template is</p>
+<pre><code>pandoc -s $(name).md -o $(name).html --template=template.html --mathjax --metadata pagetitle=&#39;Page of Content&#39;</code></pre>
+<p>(This is an entry in a Makefile, where I pass the parameter <code>name</code> to identify the file.)</p>
+<p>The template file <code>template.html</code> is the template used by Pandoc to generate the post. It’s as minimalist as possible. The most important thing, in the widescreen era, is that it sets the max width to 760px. I honestly don’t understand why browsers default to fullscreen display. No sane person would think that makes sense.</p>
+<p>Here’s the entire template file, with most of the CSS borrowed from <a href="http://bettermotherfuckingwebsite.com/">this site</a>. My site is actually slightly more minimalist than that one because I removed the CSS declaration that changed the font color, which made it harder to read. The full template is</p>
 <pre><code>&lt;head&gt;
 &lt;style type=&quot;text/css&quot;&gt;body{margin:40px
 auto;max-width:760px;line-height:1.6;font-size:20px;padding:0
-10px}h1,h2,h3{line-height:1.2}&lt;/style&gt;
+10px;font-family:sans}h1,h2,h3{line-height:1.2}&lt;/style&gt;
 &lt;script type=&quot;text/javascript&quot; id=&quot;MathJax-script&quot; async
   src=&quot;https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js&quot;&gt;
 &lt;/script&gt;
@@ -28,9 +26,22 @@ auto;max-width:760px;line-height:1.6;font-size:20px;padding:0
 $body$
 &lt;br&gt;&lt;a href=&quot;index.html&quot;&gt;&amp;#10004; Return To Index&lt;/a&gt;
 &lt;/body</code></pre>
-<p>I added the MathJax CDN in case I write something with equations. For plain text sites, those three lines could be removed.</p>
+<p>I added the MathJax CDN in case I write something with equations. For posts with no equations, you can reduce that further while still having a readable site:</p>
+<pre><code>&lt;head&gt;
+&lt;style type=&quot;text/css&quot;&gt;body{margin:40px
+auto;max-width:760px;line-height:1.6;font-size:20px;padding:0
+10px;font-family:sans}h1,h2,h3{line-height:1.2}&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+$body$
+&lt;br&gt;&lt;a href=&quot;index.html&quot;&gt;&amp;#10004; Return To Index&lt;/a&gt;
+&lt;/body</code></pre>
+<p>The call to Pandoc becomes</p>
+<pre><code>pandoc -s $(name).md -o $(name).html --template=template.html --metadata pagetitle=&#39;Page of Content&#39;</code></pre>
 <h2 id="netlify">Netlify</h2>
-<p>I use Netlify to deploy the site. That means I push the site to Github and it’s automatically updated. I find Netlify very easy to work with.</p>
+<p>I use Netlify to deploy the site. It’s linked to a private repo on Github. The site is automatically updated on every push to the server. There’s a minor amount of work to do to set up Netlify, but once it’s done it’s an absolute dream because you never have to think about it again. Just push to Git and go do something else.</p>
+<h2 id="version-control">Version Control</h2>
+<p>Although I’m a big fan of Fossil, I have a private repo on Github so I can let Netlify do the deployment for me. I never have to think about <em>any</em> of the details related to deployment.</p>
 <h2 id="my-text-editor">My Text Editor</h2>
 <p>I use Textadept to type my posts.</p>
 <br><a href="index.html">&#10004; Return To Index</a>

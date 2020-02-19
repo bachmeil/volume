@@ -1,0 +1,25 @@
+<head>
+<style type="text/css">body{margin:40px
+auto;max-width:760px;line-height:1.6;font-size:20px;padding:0
+10px;font-family:sans}h1,h2,h3{line-height:1.2}pre{white-space: pre-wrap}</style>
+</head>
+<body>
+<h1 id="using-fossil-as-an-information-repository">Using Fossil as an information repository</h1>
+<p>I’m a big fan of the <a href="https://fossil-scm.org/home/doc/trunk/www/index.wiki">Fossil</a> system for version control. One of the many nice things is its usefulness as an information repository. I’ve used it that way for a while, but over time I’ve come to use it quite a lot. (This is not surprising. It’s nice to have all your information in one place. Once you get a certain amount of information into Fossil, it becomes your go-to tool for storing things.)</p>
+<p>You can set up a Fossil repo on a CGI server. You then have your own personal cloud notes storage. Something you might not realize immediately is that Fossil has good search built into it, and you can restrict your search to just the wiki if you want. Create a new wiki page for each major topic. For instance, you might have the following:</p>
+<ul>
+<li>C++ programming</li>
+<li>Statistics</li>
+<li>Machine learning</li>
+<li>Cool links</li>
+<li>Home repair</li>
+<li>Finances</li>
+</ul>
+<p>Every time you have a piece of information you want to save, edit that wiki page. You can do it right from your browser if you want. At the top, add the new information. To make it easy to search, you can add tags. I use tags of the form <code>tag_foo</code>. I’d prefer Twitter style hashtags, like <code>#foo</code>, but I don’t know how to specify <code>#</code> as a search character. It’s ignored if you type <code>#foo</code> into the search box, so it treats the search the same as just <code>foo</code>. There’s probably a way to fix that; I’ve never dug into it.</p>
+<p>After a while your wiki file might be getting large. In that case, create a new wiki page with <code>2</code> appended at the end, then <code>3</code>, and so on. For your finances, the first page is titled <code>finances</code>, the second <code>finances2</code>, the third <code>finances3</code>, and so on. There’s no disadvantage to creating extra pages other than on the index page that gets generated (you’ll have a ton of pages listed), but it’s not exactly fun to work your way through a 20,000 line file even if you know that file contains your search term.</p>
+<p>Eight to ten wiki pages is the sweet spot for me at this point. Maybe that will change as I accumulate more notes.</p>
+<p>Another thing to keep in mind is that it’s really easy to add a new repo, so maybe you want different repos for work and home, or for different types of work, or whatever. The problem is that your notes are then scattered across multiple places, and you can’t search multiple repo wikis, so you’d have to be sure the information held in the different repos really is independent.</p>
+<p>Here’s what’s really nice. You might decide you want a more sophisticated and reliable notes system. You want a database and good backups. A Fossil repo <em>is</em> an SQL database (SQLite to be specific) and it <em>is</em> easy to back it up with a simple pull operation. You get all that for free. Once I realized that, it felt good putting my notes into Fossil, because it was hard to think of a better information repository. Easy entry, good search, the reliability and peace of mind of a distributed version control system. It’s hard to see how you can do better than that.</p>
+<p>{Let’s see how well this is working in five years. One rule of thumb is that it takes 500 pages of letter-sized paper for one MB of storage. 100 MB is 50,000 pages. The full, uncompressed FreeBSD Handbook is only 3.5 MB. In order to get to 100 MB of data - something SQLite can handle very easily - I’d have to write the equivalent of thirty FreeBSD Handbooks! That would be a hell of a lot of notes. My goals are: 20 pages of notes, then 50, then 100. At that point, I’ll be at about 200K of data. I can’t imagine this being a problem for <em>any</em> single person’s notes collection.}</p>
+<br><a href="index.html">&#10004; Return To Index</a>
+</body
