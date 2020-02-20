@@ -1,0 +1,22 @@
+<head>
+<style type="text/css">body{margin:40px
+auto;max-width:760px;line-height:1.6;font-size:20px;padding:0
+10px;font-family:sans}h1,h2,h3{line-height:1.2}pre{white-space: pre-wrap}</style>
+</head>
+<body>
+<h1 id="static-site-generation">Static site generation</h1>
+<p>There are approximately a bazillion static site generators floating around. This post is what I’d like in a static site generator.</p>
+<p>1. Support for Pandoc. That lets me write in any format I want. I’m not the biggest fan of markdown. I use it because it’s what’s most supported and it sort of works.</p>
+<p>2. No restrictions on file names. I don’t like having to, for instance, include the date in the file name. What if it gets updated? What if I have multiple posts on the same day?</p>
+<p>3. Good theme. That means customization is easy.</p>
+<p>4. Support for equations.</p>
+<p>5. Put the title in the first line of a post, like this: <code>title: Why dogs eat yellow snow</code>.</p>
+<p>6. Index creation using the title of each post.</p>
+<p>7. Tag support.</p>
+<p>8. Rebuilding only the new/changed input files or recently changed files.</p>
+<p>The remaining question is the ordering of the posts in the index. I <em>think</em> the answer is to have a post creation command that puts a timestamp (including seconds) on the second line. Something like this:</p>
+<pre><code>title:
+created: 2020-02-19 21:15:02</code></pre>
+<p>Maybe even allow the title to be an argument to the call.</p>
+<br><a href="index.html">&#10004; Return To Index</a>
+</body
